@@ -4,9 +4,7 @@ from selenium.webdriver.support import expected_conditions
 
 
 class TestLoginPage:
-    
     def test_user_login(self, driver):
-        driver.get("https://qa-desk.stand.praktikum-services.ru")
         driver.find_element(*Locators.login_button).click()   
         WebDriverWait(driver, 1).until(expected_conditions.visibility_of_element_located(Locators.imput_login_email))
         driver.find_element(*Locators.imput_login_email).send_keys("aser@mail.ru")
@@ -19,7 +17,6 @@ class TestLoginPage:
 
     
     def test_user_logout(self, driver):
-        driver.get("https://qa-desk.stand.praktikum-services.ru")
         driver.find_element(*Locators.login_button).click()
         WebDriverWait(driver, 1).until(expected_conditions.visibility_of_element_located(Locators.imput_login_email))
         driver.find_element(*Locators.imput_login_email).send_keys("aser@mail.ru")

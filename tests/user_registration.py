@@ -13,7 +13,6 @@ class TestRegistrationPage:
     
     def test_user_valid_registration(self, driver):
         email = TestRegistrationPage.generate_email(self)
-        driver.get("https://qa-desk.stand.praktikum-services.ru")
         driver.find_element(*Locators.login_button).click()
         WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.no_account_button))
         driver.find_element(*Locators.no_account_button).click()
@@ -29,7 +28,6 @@ class TestRegistrationPage:
         assert driver.find_element(*Locators.user_avatar).is_displayed() and "User." in driver.find_element(*Locators.user_name).text
     
     def test_user_not_valid_email_registration(self, driver):
-        driver.get("https://qa-desk.stand.praktikum-services.ru")
         driver.find_element(*Locators.login_button).click()
         WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.no_account_button))
         driver.find_element(*Locators.no_account_button).click()
@@ -46,7 +44,6 @@ class TestRegistrationPage:
     
     def test_user_not_valid_password_registration(self, driver):
         email = TestRegistrationPage.generate_email(self) 
-        driver.get("https://qa-desk.stand.praktikum-services.ru")
         driver.find_element(*Locators.login_button).click()
         WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable(Locators.no_account_button))
         driver.find_element(*Locators.no_account_button).click()

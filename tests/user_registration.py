@@ -1,7 +1,7 @@
 
 import time
 import random
-import locators
+from locators import Locators
 
 class TestRegistrationPage:
 
@@ -12,50 +12,50 @@ class TestRegistrationPage:
     def test_user_valid_registration(self, driver):
         email = TestRegistrationPage.generate_email(self)
         driver.get("https://qa-desk.stand.praktikum-services.ru")
-        driver.find_element(*locators.login_button).click()
+        driver.find_element(*Locators.login_button).click()
         time.sleep(1)
-        driver.find_element(*locators.no_account_button).click()
+        driver.find_element(*Locators.no_account_button).click()
         time.sleep(1)
-        driver.find_element(*locators.imput_email).send_keys(email)
+        driver.find_element(*Locators.imput_email).send_keys(email)
         time.sleep(1)
-        driver.find_element(*locators.imput_password).send_keys("2846")
+        driver.find_element(*Locators.imput_password).send_keys("2846")
         time.sleep(1)
-        driver.find_element(*locators.confirm_password).send_keys("2846")
+        driver.find_element(*Locators.confirm_password).send_keys("2846")
         time.sleep(5)
-        driver.find_element(*locators.create_account_button).click()
+        driver.find_element(*Locators.create_account_button).click()
         time.sleep(5)
-        assert driver.find_element(*locators.user_avatar).is_displayed() and "User." in driver.find_element(*locators.user_name).text
+        assert driver.find_element(*Locators.user_avatar).is_displayed() and "User." in driver.find_element(*Locators.user_name).text
     
     def test_user_not_valid_email_registration(self, driver):
         driver.get("https://qa-desk.stand.praktikum-services.ru")
-        driver.find_element(*locators.login_button).click()
+        driver.find_element(*Locators.login_button).click()
         time.sleep(1)
-        driver.find_element(*locators.no_account_button).click()
+        driver.find_element(*Locators.no_account_button).click()
         time.sleep(1)
-        driver.find_element(*locators.imput_email).send_keys("aser5mail.ru")
+        driver.find_element(*Locators.imput_email).send_keys("aser5mail.ru")
         time.sleep(1)
-        driver.find_element(*locators.imput_password).send_keys("2846")
+        driver.find_element(*Locators.imput_password).send_keys("2846")
         time.sleep(1)
-        driver.find_element(*locators.confirm_password).send_keys("2846")
+        driver.find_element(*Locators.confirm_password).send_keys("2846")
         time.sleep(5)
-        driver.find_element(*locators.create_account_button).click()
+        driver.find_element(*Locators.create_account_button).click()
         time.sleep(5)
-        assert "Ошибка" in  driver.find_element(*locators.text_error_email).text and driver.find_element(*locators.red_fields).is_displayed()
+        assert "Ошибка" in  driver.find_element(*Locators.text_error_email).text and driver.find_element(*Locators.red_fields).is_displayed()
     
     def test_user_not_valid_password_registration(self, driver):
         email = TestRegistrationPage.generate_email(self) 
         driver.get("https://qa-desk.stand.praktikum-services.ru")
-        driver.find_element(*locators.login_button).click()
+        driver.find_element(*Locators.login_button).click()
         time.sleep(1)
-        driver.find_element(*locators.no_account_button).click()
+        driver.find_element(*Locators.no_account_button).click()
         time.sleep(1)
-        driver.find_element(*locators.imput_email).send_keys(email)
+        driver.find_element(*Locators.imput_email).send_keys(email)
         time.sleep(1)
-        driver.find_element(*locators.imput_password).send_keys("2846")
+        driver.find_element(*Locators.imput_password).send_keys("2846")
         time.sleep(1)
-        driver.find_element(*locators.confirm_password).send_keys("28467")
+        driver.find_element(*Locators.confirm_password).send_keys("28467")
         time.sleep(5)
-        driver.find_element(*locators.create_account_button).click()
+        driver.find_element(*Locators.create_account_button).click()
         time.sleep(5)
-        assert "Пароли не совпадают" in  driver.find_element(*locators.text_error_password).text and driver.find_element(*locators.red_fields).is_displayed()
+        assert "Пароли не совпадают" in  driver.find_element(*Locators.text_error_password).text and driver.find_element(*Locators.red_fields).is_displayed()
  
